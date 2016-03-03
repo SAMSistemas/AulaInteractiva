@@ -1,0 +1,13 @@
+<form name="f">
+	<input type="text" name="user.username" ng-model="user.username" placeholder="Usuario" ng-minlength="3" ng-maxlength="15" ng-required="true"/>
+	<input type="password" name="user.password" ng-model="user.password" placeholder="Contraseña"  ng-minlength="3" ng-maxlength="15" ng-required="true"/>
+	<a ng-click="sendData()" class="waves-effect waves-light btn">Crear Usuario</a>
+	<br/>
+	<div class="width150">
+		<span class="input-error" ng-show="f.name.$error.minlength">Es muy corto</span>
+		<span class="input-error" ng-show="f.name.$error.maxlength">Es muy largo</span>
+		<span class="input-error" ng-show="f.lastName.$error.minlength">Es muy corto</span>
+		<span class="input-error" ng-show="f.lastName.$error.maxlength">Es muy largo</span>
+	</div>
+	<br/>
+</form>

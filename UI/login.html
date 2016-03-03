@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/login.material.css">
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#loginAISubmit').click(function(){
+					var formData = $('#loginAIForm').serialize();
+					$.ajax({
+						url: "/login",
+						type: "POST",
+						dataType: "json",
+						data: formData,
+						success: function(data, textStatus, jqXHR) {
+							if(typeof data.redirect == 'string')
+								window.location = data.redirect;
+						}
+					});
+				});
+
+			});
+		</script>
+
+		<div class="login-container">
+			<section class="login" id="login">
+				<header>
+					<h2>Application Name</h2>
+					<h4>Login</h4>
+				</header>
+				<form id="loginAIForm" class="login-form">
+					<input id="username" name="username" type="text" class="login-input" placeholder="Usuario" required autofocus/>
+					<input id="password" name="password" type="password" class="login-input" placeholder="Contraseña" required/>
+					<div class="submit-container">
+						<input id="loginAISubmit" type="button" class="login-button" value="Login"/>
+					</div>
+				</form>
+			</section>
+		</div>
+
+	</body>
+
+
+</html>

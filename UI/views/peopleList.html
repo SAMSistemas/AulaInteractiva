@@ -1,0 +1,15 @@
+<div>
+	<div class="row">
+		<div class="valign-wrapper">
+			<div class="input-field col s3 valign">
+				<input id="buscar"  type="text" ng-model="search">
+				<label for="buscar">Buscar</label>
+			</div>
+			<div class="col s9 valign"><a ng-click="loadPeople()" class="waves-effect waves-light btn">Recargar</a></div>
+		</div>
+	</div>
+
+	<ul class="collection">
+		<li class="collection-item" ng-repeat="person in people | filter:search"> {{person.username}}, {{person.password}} </li>
+	</ul>
+</div>
