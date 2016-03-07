@@ -4,8 +4,8 @@ var model = orm.Notification; // Modelo utilizado por este DAO
 
 var NotificationDAO = {
 
-	createNotification: function(notificationData) {
-		model.create(notificationData).then(function(){
+	createNotification: function(userId, description, action) {
+		model.create({user_id: userId, description: description, action: action}).then(function(){
 			console.log("NotificationDAO::createNotification -> notification created correctly!");
 		});
 	},

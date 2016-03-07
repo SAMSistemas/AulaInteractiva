@@ -11,8 +11,7 @@ var sequelize = new Sequelize(config.database, config.username, config.password,
 
 var models = [
   'User',
-  'Notification',
-  'Person'
+  'Notification'
 ];
 
 models.forEach(function(model) {

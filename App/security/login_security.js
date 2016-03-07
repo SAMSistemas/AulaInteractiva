@@ -5,7 +5,7 @@ var strategy = require("./login_strategy");
 
 /* Passport initialization */
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.user_id);
 });
 
 passport.deserializeUser(function(user, done) {

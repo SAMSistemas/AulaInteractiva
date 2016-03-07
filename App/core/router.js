@@ -3,7 +3,6 @@ var bodyParser = require('body-parser');
 
 var server_config = require("./server_config");
 var userDAO = require('../persistence/dao/user_dao');
-var personDAO = require('../persistence/dao/person_dao');
 var notificationDao = require('../persistence/dao/notification_dao');
 
 var login_security = require("../security/login_security");
@@ -62,7 +61,6 @@ router.get("/error", function(request, response){
 
 // SOLO DISPONIBLE PARA EL ROL ADMIN, MOVER LOGICA A DOMAIN
 router.get("/getUsers", login_security.onlyAuthenticated, function( request,response){
-
 	userDAO.getUsers().then(function(users){
 		console.log(users);
 		response.json(users);
@@ -71,8 +69,12 @@ router.get("/getUsers", login_security.onlyAuthenticated, function( request,resp
 
 router.post("/addUser", login_security.onlyAuthenticated, function (request,response) {
 	var user = request.body;
-    console.log(user);
 	userDAO.addUser(user.username, user.password);
+	userDAO.getUserByName(user.username).then(function(userData){
+		var userId = userData.dataValues.user_id;
+		notificationDao.createNotification(userId, "Welcome!!", "");
+	});
+
 	response.end();
 });
 
