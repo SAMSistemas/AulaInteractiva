@@ -1,0 +1,21 @@
+{
+  "name": "bower",
+  "description": "bower",
+  "main": "./App/main_entry.js",
+  "authors": [
+    "daniel.gomez"
+  ],
+  "license": "GPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "UI/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.0.6",
+    "angular-route": "^1.5.0"
+  }
+}

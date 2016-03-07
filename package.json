@@ -4,7 +4,8 @@
   "description": "Test app",
   "main": "./App/main_entry.js",
   "scripts": {
-    "build": "npm install && npm run test && npm run start",
+    "build": "npm install && npm run bower && npm run test && npm run start",
+    "bower": "bower install",
     "start": "node ./App/main_entry.js",
     "test": "npm run test-node",
     "test-node": "mocha ./Test"
@@ -14,6 +15,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
+    "bower": "^1.7.7",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "express-socket.io-session": "^1.3.1",
