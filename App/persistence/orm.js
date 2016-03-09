@@ -5,6 +5,7 @@ var path = require("path");
 var Sequelize = require("sequelize");
 var env = "development";
 var config = require(path.join(__dirname,"config", "sequelize_config.json"))[env];
+var sequelizeModels = [];
 
 console.log("ORM@ " + JSON.stringify(config));
 
@@ -16,7 +17,11 @@ var models = fs.readdirSync("./persistence/models").map(function(file){
 
 
 models.forEach(function(model) {
-  module.exports[model] = sequelize.import(__dirname + '/models/' + model);
+  sequelizeModels[model] = sequelize.import(__dirname + '/models/' + model);
 });
 
+
+require('./model_associations')(sequelizeModels);
+
 module.exports.sequelize = sequelize;
+module.exports.models = sequelizeModels;

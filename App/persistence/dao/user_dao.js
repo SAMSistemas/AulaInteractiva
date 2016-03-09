@@ -1,7 +1,7 @@
 var orm = require("../orm");
 var encryption = require("../../security/encryption_util");
 
-var model = orm.User; // Modelo utilizado por este DAO
+var model = orm.models.User; // Modelo utilizado por este DAO
 
 var UserDAO = {
 
