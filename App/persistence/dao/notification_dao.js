@@ -12,10 +12,6 @@ var NotificationDAO = {
 	getNotificationByUserId: function(userId) {
 		console.log("NotificationDAO::getNotificationByUserId -> " + userId);
 		return model.findAll({where: {user_id: userId}});
-	},
-	getNotifiedUserByNotificationId: function(notificationId){
-		return model.findOne({where: {notification_id: notificationId}});
-
 	}
 };
 

@@ -15,6 +15,9 @@ module.exports = function(server, session){
         eventLoop = setInterval(function(){
             notificationDao.getNotificationByUserId(currentUser).then(function(notificationList){
                 notificationList.forEach(function(notification){
+                    /*notification.getNotifiedUser().then(function(user){
+                        console.log(user);
+                    })*/
                     socket.emit("notify", notification);
                 })
             });
