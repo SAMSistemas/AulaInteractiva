@@ -11,7 +11,7 @@ module.exports = function(server, session){
     push_server.on("connection", function(socket){
         console.log("Websocket connection open");
 
-        var currentUser = socket.handshake.session.passport.user;
+        var currentUser = socket.handshake.session.passport.user.user_id;
         eventLoop = setInterval(function(){
             notificationDao.getNotificationByUserId(currentUser).then(function(notificationList){
                 notificationList.forEach(function(notification){

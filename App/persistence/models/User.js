@@ -5,8 +5,13 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoincrement: true,
     },
+    role_id:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     username: DataTypes.STRING,
     password: DataTypes.STRING
+
   });
 
   return User;

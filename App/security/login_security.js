@@ -2,12 +2,22 @@
 
 var passport = require('passport');
 var strategy = require("./login_strategy");
+var permissionFactory = require('./factory/permission_factory');
 
 /* Passport initialization */
+// Callback llamado cuando se crea la sesión
 passport.serializeUser(function(user, done) {
-  done(null, user.user_id);
+  var currentUser = user.user_id;
+
+  user.getUserRole().then(function(role){
+      var permissionCsv = role.dataValues.permissions;
+      done(null, {user_id: currentUser, permission: permissionFactory.createPermissionGroup(permissionCsv)});
+
+  });
+
 });
 
+// Callback llamado en cada request
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
